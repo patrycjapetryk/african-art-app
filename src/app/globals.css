@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: var(--font-univers), sans-serif;
+  --font-serif: var(--font-ivymode), serif;
+
+  --color-aag-beige: #faf8f4;
+  --color-aag-black: #191919;
+  --color-aag-gray: oklch(92% 0.004 286.32);
+
+  --text-base: 0.9rem;
+  --text-sm: 0.87rem;
+
+  --animate-fade-in: fade-in 0.5s ease-in-out;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+/* Hide scrollbar*/
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
