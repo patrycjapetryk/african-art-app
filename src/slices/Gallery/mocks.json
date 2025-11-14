@@ -10,22 +10,6 @@
 						"__TYPE__": "GroupItemContent",
 						"value": [
 							[
-								"title",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "cup",
-									"type": "Text"
-								}
-							],
-							[
-								"text",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "pleasant",
-									"type": "Text"
-								}
-							],
-							[
 								"image",
 								{
 									"origin": {
@@ -66,15 +50,6 @@
 						]
 					}
 				]
-			},
-			"link": {
-				"key": "a7156a09-c90e-4adb-9f15-21d33ae50a9c",
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "https://slicemachine.dev",
-					"text": "fly"
-				}
 			}
 		},
 		"items": []

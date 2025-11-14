@@ -199,26 +199,6 @@ export type DescriptionSlice = prismic.SharedSlice<
  */
 export interface GallerySliceDefaultPrimaryGalleryItemItem {
   /**
-   * Title field in *Gallery → Default → Primary → Gallery Item*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.default.primary.galleryItem[].title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Text field in *Gallery → Default → Primary → Gallery Item*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.default.primary.galleryItem[].text
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  text: prismic.KeyTextField;
-
-  /**
    * Image field in *Gallery → Default → Primary → Gallery Item*
    *
    * - **Field Type**: Image
@@ -254,16 +234,6 @@ export interface GallerySliceDefaultPrimary {
   galleryItem: prismic.GroupField<
     Simplify<GallerySliceDefaultPrimaryGalleryItemItem>
   >;
-
-  /**
-   * Link field in *Gallery → Default → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.default.primary.link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**

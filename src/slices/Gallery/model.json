@@ -18,20 +18,6 @@
             "label": "Gallery Item",
             "repeat": true,
             "fields": {
-              "title": {
-                "type": "Text",
-                "config": {
-                  "label": "Title",
-                  "placeholder": ""
-                }
-              },
-              "text": {
-                "type": "Text",
-                "config": {
-                  "label": "Text",
-                  "placeholder": ""
-                }
-              },
               "image": {
                 "type": "Image",
                 "config": {
@@ -52,17 +38,6 @@
                 }
               }
             }
-          }
-        },
-        "link": {
-          "type": "Link",
-          "config": {
-            "label": "Link",
-            "placeholder": "",
-            "select": null,
-            "allowTargetBlank": true,
-            "allowText": true,
-            "repeat": false
           }
         }
       },

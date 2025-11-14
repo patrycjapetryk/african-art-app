@@ -18,15 +18,15 @@ const GalleryItem: FC<GalleryItemProps> = ({ slice }) => {
       <PrismicNextLink href='/' className='fixed right-6 top-6'>
         <Image src='/images/close.svg' alt='Close icon' width={22} height={22} priority />
       </PrismicNextLink>
-      <div className='flex flex-col gap-12 w-full items-center justify-center max-w-4xl'>
+      <div className='flex flex-col gap-8 w-full items-center justify-center max-w-4xl'>
         {isFilled.richText(heading) && (
-          <Heading size='xl' className='text-center italic mt-14 mb-4'>
+          <Heading size='xl' className='text-center italic mt-4'>
             <PrismicText field={heading} />
           </Heading>
         )}
 
         <div className='w-full flex items-end gap-5'>
-          <div className='w-40'>
+          <div className='w-36'>
             <PrismicNextImage field={image} sizes='100vw' className='w-full' alt='' />
           </div>
           {isFilled.richText(description) && (
