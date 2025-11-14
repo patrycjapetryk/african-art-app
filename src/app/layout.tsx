@@ -11,7 +11,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className={`${univers.variable} ${ivymode.variable} scroll-smooth`}>
-      <body>{children}</body>
+      <body className='font-sans overflow-x-hidden antialiased text-aag-black text-base bg-aag-beige'>
+        {children}
+      </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>
   );

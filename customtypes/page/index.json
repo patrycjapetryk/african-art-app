@@ -27,6 +27,15 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "gallery": {
+              "type": "SharedSlice"
+            },
+            "text": {
+              "type": "SharedSlice"
+            },
+            "gallery_item": {
+              "type": "SharedSlice"
+            },
             "photo": {
               "type": "SharedSlice"
             },

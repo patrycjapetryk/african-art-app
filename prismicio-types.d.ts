@@ -70,6 +70,9 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 type PageDocumentDataSlicesSlice =
+  | GallerySlice
+  | TextSlice
+  | GalleryItemSlice
   | PhotoSlice
   | DescriptionSlice
   | RichTextSlice;
@@ -192,6 +195,183 @@ export type DescriptionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Gallery → Default → Primary → Gallery Item*
+ */
+export interface GallerySliceDefaultPrimaryGalleryItemItem {
+  /**
+   * Title field in *Gallery → Default → Primary → Gallery Item*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.galleryItem[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *Gallery → Default → Primary → Gallery Item*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.galleryItem[].text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Image field in *Gallery → Default → Primary → Gallery Item*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.galleryItem[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Link field in *Gallery → Default → Primary → Gallery Item*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.galleryItem[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *Gallery → Default → Primary*
+ */
+export interface GallerySliceDefaultPrimary {
+  /**
+   * Gallery Item field in *Gallery → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.galleryItem[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  galleryItem: prismic.GroupField<
+    Simplify<GallerySliceDefaultPrimaryGalleryItemItem>
+  >;
+
+  /**
+   * Link field in *Gallery → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for Gallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GallerySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GallerySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Gallery*
+ */
+type GallerySliceVariation = GallerySliceDefault;
+
+/**
+ * Gallery Shared Slice
+ *
+ * - **API ID**: `gallery`
+ * - **Description**: Gallery
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GallerySlice = prismic.SharedSlice<
+  "gallery",
+  GallerySliceVariation
+>;
+
+/**
+ * Primary content in *GalleryItem → Default → Primary*
+ */
+export interface GalleryItemSliceDefaultPrimary {
+  /**
+   * Heading field in *GalleryItem → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery_item.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *GalleryItem → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery_item.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Text field in *GalleryItem → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery_item.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * Image field in *GalleryItem → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery_item.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for GalleryItem Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GalleryItemSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GalleryItemSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *GalleryItem*
+ */
+type GalleryItemSliceVariation = GalleryItemSliceDefault;
+
+/**
+ * GalleryItem Shared Slice
+ *
+ * - **API ID**: `gallery_item`
+ * - **Description**: GalleryItem
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GalleryItemSlice = prismic.SharedSlice<
+  "gallery_item",
+  GalleryItemSliceVariation
+>;
+
+/**
  * Primary content in *Photo → Default → Primary*
  */
 export interface PhotoSliceDefaultPrimary {
@@ -278,6 +458,107 @@ export type RichTextSlice = prismic.SharedSlice<
   RichTextSliceVariation
 >;
 
+/**
+ * Primary content in *Text → Default → Primary*
+ */
+export interface TextSliceDefaultPrimary {
+  /**
+   * Text field in *Text → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Text Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Text
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TextSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Text → Two Columns → Primary*
+ */
+export interface TextSliceTwoColumnsPrimary {
+  /**
+   * Text field in *Text → Two Columns → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text.twoColumns.primary.text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Two Columns variation for Text Slice
+ *
+ * - **API ID**: `twoColumns`
+ * - **Description**: Text
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TextSliceTwoColumns = prismic.SharedSliceVariation<
+  "twoColumns",
+  Simplify<TextSliceTwoColumnsPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Text → One column centered → Primary*
+ */
+export interface TextSliceOneColumnCenteredPrimary {
+  /**
+   * Text field in *Text → One column centered → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text.oneColumnCentered.primary.text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * One column centered variation for Text Slice
+ *
+ * - **API ID**: `oneColumnCentered`
+ * - **Description**: Text
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TextSliceOneColumnCentered = prismic.SharedSliceVariation<
+  "oneColumnCentered",
+  Simplify<TextSliceOneColumnCenteredPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Text*
+ */
+type TextSliceVariation =
+  | TextSliceDefault
+  | TextSliceTwoColumns
+  | TextSliceOneColumnCentered;
+
+/**
+ * Text Shared Slice
+ *
+ * - **API ID**: `text`
+ * - **Description**: Text
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TextSlice = prismic.SharedSlice<"text", TextSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -307,6 +588,15 @@ declare module "@prismicio/client" {
       DescriptionSliceDefaultPrimary,
       DescriptionSliceVariation,
       DescriptionSliceDefault,
+      GallerySlice,
+      GallerySliceDefaultPrimaryGalleryItemItem,
+      GallerySliceDefaultPrimary,
+      GallerySliceVariation,
+      GallerySliceDefault,
+      GalleryItemSlice,
+      GalleryItemSliceDefaultPrimary,
+      GalleryItemSliceVariation,
+      GalleryItemSliceDefault,
       PhotoSlice,
       PhotoSliceDefaultPrimary,
       PhotoSliceVariation,
@@ -315,6 +605,14 @@ declare module "@prismicio/client" {
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
       RichTextSliceDefault,
+      TextSlice,
+      TextSliceDefaultPrimary,
+      TextSliceTwoColumnsPrimary,
+      TextSliceOneColumnCenteredPrimary,
+      TextSliceVariation,
+      TextSliceDefault,
+      TextSliceTwoColumns,
+      TextSliceOneColumnCentered,
     };
   }
 }
