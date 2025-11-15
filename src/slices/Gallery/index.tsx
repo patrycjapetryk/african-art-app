@@ -39,7 +39,7 @@ const Gallery: FC<GalleryProps> = ({ slice }) => {
   return (
     <Bounded as='section'>
       <div className='grid gap-10 w-full'>
-        <ul className='grid grid-cols-6 items-start gap-3'>
+        <ul className='grid grid-cols-4 items-start gap-3 md:grid-cols-8'>
           {galleryItem.map((item) => (
             <GalleryCard key={item.image.url} news={item} />
           ))}
