@@ -9,6 +9,7 @@ import { univers, ivymode } from './fonts';
 
 export const metadata: Metadata = {
   manifest: '/manifest.ts',
+  themeColor: '#FAF8F4',
 };
 
 export default function RootLayout({
