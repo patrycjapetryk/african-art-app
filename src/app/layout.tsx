@@ -3,6 +3,7 @@ import { repositoryName } from '@/prismicio';
 import type { Metadata } from 'next';
 
 import ServiceWorkerRegistrar from './ServiceWorkerRegistrar';
+import FullscreenController from '../ui/FullscreenController';
 
 import './globals.css';
 import { univers, ivymode } from './fonts';
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${univers.variable} ${ivymode.variable} scroll-smooth`}>
       <body className='font-sans overflow-x-hidden antialiased text-aag-black text-base bg-aag-beige'>
+        <FullscreenController />
         <ServiceWorkerRegistrar />
         {children}
       </body>
