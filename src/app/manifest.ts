@@ -3,10 +3,11 @@ import type { MetadataRoute } from 'next';
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'African Art Gallery',
-    short_name: 'AfricanArt',
-    description: 'African Art Gallery in Warsaw App',
+    short_name: 'African Art',
+    description: 'African Art Gallery App',
     start_url: '/',
-    display: 'standalone',
+    display: 'fullscreen',
+    // display: 'standalone',
     background_color: '#FAF8F4',
     theme_color: '#161615',
     icons: [
