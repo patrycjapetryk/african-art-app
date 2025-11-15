@@ -28,7 +28,7 @@ export function Bounded({
         className,
       )}
     >
-      <div className='flex flex-col items-center w-full px-4 md:px-[7.5%]'>{children}</div>
+      <div className='flex flex-col items-center w-full px-4 md:px-9'>{children}</div>
     </Comp>
   );
 }
