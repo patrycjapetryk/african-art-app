@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-export default function FullscreenController() {
+export function FullscreenController() {
   useEffect(() => {
     const goFullscreen = () => {
       const el = document.documentElement as HTMLElement & {
