@@ -5,7 +5,7 @@ export async function middleware(request: NextRequest) {
   const client = createClient();
   const repository = await client.getRepository();
   const locales = repository.languages.map((lang) => lang.id);
-  const defaultLocale = 'pl'; // ustawiamy na stałe domyślny język
+  const defaultLocale = locales[0];
 
   const { pathname } = request.nextUrl;
 
@@ -19,20 +19,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // 🔹 Root '/' -> rewrite do domyślnego języka
-  if (pathname === '/') {
-    // rewrite zamiast redirect - Netlify Edge obsłuży poprawnie
-    return NextResponse.rewrite(new URL(`/${defaultLocale}`, request.url));
-  }
-
   // 🔹 Sprawdź czy URL już ma locale
   const hasLocale = locales.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
   );
 
-  // 🔹 Jeśli brak prefiksu w innych URL, dodaj domyślny język
+  // 🔹 Jeśli brak prefiksu, redirect do domyślnego języka
   if (!hasLocale) {
-    return NextResponse.rewrite(new URL(`/${defaultLocale}${pathname}`, request.url));
+    return NextResponse.redirect(new URL(`/${defaultLocale}${pathname}`, request.url));
   }
 
   return NextResponse.next();
